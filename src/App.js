@@ -10,6 +10,7 @@ function App() {
   //the callback will happen whenever the dependencies in the array change and avoid an infinite loop
   //Runs only when we refresh because there are no dependencies to change in the array
   useEffect(() => {
+    //without useEffect we will end up with an infinite loop.
     const storedUserLoggedInInformation = localStorage.getItem("isLoggedIn");
     if (storedUserLoggedInInformation === "1") {
       setIsLoggedIn(true);
@@ -19,11 +20,12 @@ function App() {
   const loginHandler = (email, password) => {
     // We should of course check email and password
     // But it's just a dummy/ demo anyways
-    localStorage.setItem("isLoggedIn", "1");
+    localStorage.setItem("isLoggedIn", "1"); //1 shows that the user is logged in.
     setIsLoggedIn(true);
   };
 
   const logoutHandler = () => {
+    localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
   };
 
