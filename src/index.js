@@ -3,8 +3,14 @@ import ReactDOM from "react-dom";
 
 import "./index.css";
 import App from "./App";
+import { AuthcontextProvider } from "./store/auth-context";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <AuthcontextProvider>
+    <App />
+  </AuthcontextProvider>,
+  document.getElementById("root")
+);
 
 //What is an Effect in React
 
@@ -17,3 +23,9 @@ ReactDOM.render(<App />, document.getElementById("root"));
 //There is also a possiblity of infinite looping and bugs if side effects are written directly
 //inside component functions
 //useEffect(()=>{...}, [dependencies]) the callback execute only when the dependencies change
+
+//rules for hooks
+//React hooks can be used in inbuilt React component functions that returns JSX code
+// there are custome hooks that can be used anywhere
+//hooks can't be used in any nesting and only call them at the top level.
+//useEffect always add everything that you put in it as a dependencies leaving the default functions
